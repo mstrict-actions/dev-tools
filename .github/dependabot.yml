@@ -2,6 +2,8 @@ version: 2
 updates:
   - package-ecosystem: npm
     ignore:
+      - dependency-name: typescript
+        versions: ['>=6.1.0']
       - dependency-name: '@types/node'
         update-types: [version-update:semver-major]
     directory: /
