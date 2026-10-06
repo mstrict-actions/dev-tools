@@ -1,0 +1,51 @@
+{
+  "name": "@mstrict-actions/dev-tools",
+  "version": "1.0.0",
+  "description": "Shared strict development configurations for Node.js GitHub Actions",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mstrict-actions/dev-tools.git"
+  },
+  "engines": {
+    "node": ">=24.12.0 <25"
+  },
+  "exports": {
+    "./eslint": "./configs/eslint.mjs",
+    "./prettier": "./configs/prettier.mjs",
+    "./vitest": "./configs/vitest.mjs",
+    "./tsconfig.json": "./configs/tsconfig.json"
+  },
+  "files": [
+    "configs/"
+  ],
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint --max-warnings 0 .",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm test"
+  },
+  "dependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint-config-prettier": "^10.1.8",
+    "typescript-eslint": "^8.71.1"
+  },
+  "peerDependencies": {
+    "eslint": "^10.12.0",
+    "prettier": "^3.9.9",
+    "typescript": ">=6.0.3 <6.1.0",
+    "vitest": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.1",
+    "@vitest/coverage-v8": "^5.0.3",
+    "eslint": "^10.12.0",
+    "prettier": "^3.9.9",
+    "typescript": "~6.0.3",
+    "vitest": "^5.0.3"
+  }
+}
