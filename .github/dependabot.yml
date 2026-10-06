@@ -1,6 +1,9 @@
 version: 2
 updates:
   - package-ecosystem: npm
+    ignore:
+      - dependency-name: '@types/node'
+        update-types: [version-update:semver-major]
     directory: /
     schedule:
       interval: weekly

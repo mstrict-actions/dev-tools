@@ -9,7 +9,15 @@ import tseslint from 'typescript-eslint'
  */
 export function createActionConfig({ rootDirectory }) {
   return defineConfig([
-    { ignores: ['dist/**', 'coverage/**', 'node_modules/**', '.idea/**'] },
+    {
+      ignores: [
+        'dist/**',
+        'coverage/**',
+        'node_modules/**',
+        '.idea/**',
+        '.agents/skills/**',
+      ],
+    },
     {
       files: ['**/*.{ts,mts,cts,js,mjs,cjs}'],
       extends: [

@@ -137,3 +137,19 @@ a commit remain on that commit until explicitly updated.
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+## Agent-assisted development and security
+
+Start agent work with [AGENTS.md](AGENTS.md). Required skills are vendored in
+`.agents/skills/`; [provenance](.agents/README.md) records their source
+revisions and update procedure. The instructions distinguish this repository's
+checks from consumer and remote CI validation.
+
+External workflow Actions use full commit SHAs with release comments; Dependabot
+updates these pins weekly. Node type major updates require a runtime migration.
+CodeQL scans JavaScript/TypeScript and GitHub Actions workflows with the
+`security-and-quality` suite on pull requests, main pushes, a weekly schedule
+and manual dispatch. Tests, scripts and configurations remain in scope;
+generated artifacts and vendored skills are excluded. Autofix suggestions need
+review and validation. Repository security settings must also be enabled when
+creating a new repository from this template.
