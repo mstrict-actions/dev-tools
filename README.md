@@ -110,6 +110,30 @@ TypeScript inheritance, formatting, coverage settings and packaged exports.
 There is no build or publish job. Dependabot checks npm and GitHub Actions
 weekly, with Vitest and its coverage provider grouped together.
 
+## Version tags
+
+Every push to `main` runs the Version workflow and tags the pushed tip commit as
+`0.N`, without a `v` prefix. `N` is the number of commits reachable from that
+commit (`git rev-list --count`), including merged history. The workflow fetches
+full history so the count does not depend on a shallow checkout. A push with
+several commits tags its tip; existing history is not tagged retroactively.
+
+Rerunning the workflow succeeds when the tag already points to the same commit.
+A conflicting tag fails the workflow and is never moved. Keep `main` history
+append-only so version numbers remain meaningful. Versioning runs independently
+of CI; check CI before adopting a tag. Package versions and GitHub Releases are
+not changed. Tags created with `GITHUB_TOKEN` do not trigger another workflow
+run.
+
+Consumers can select a reviewed version tag instead of a commit SHA:
+
+```sh
+npm install --save-dev '@mstrict-actions/dev-tools@git+https://github.com/mstrict-actions/dev-tools.git#0.3'
+```
+
+Commit the updated manifest and lockfile together. Existing consumers pinned to
+a commit remain on that commit until explicitly updated.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
